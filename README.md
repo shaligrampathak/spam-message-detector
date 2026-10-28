@@ -52,3 +52,11 @@ The dataset is tiny, manually written, English-only, and unlike a representative
 - scikit-learn documentation: https://scikit-learn.org/stable/
 - Streamlit documentation: https://docs.streamlit.io/
 - AI assistance was used to help draft and explain parts of the code. The student should review, run, modify, and explain all submitted work, and follow university academic-integrity rules.
+
+## Deployed website
+
+Live app: https://spam-message-detector-h8ih6njyklhqezjpdac6zj.streamlit.app/
+
+## Observed demonstration checks
+
+The live app was checked with hand-picked examples: `Congratulations, claim your free prize today` returned “Likely spam”; `Are we still meeting at the library?` returned “Likely not spam”; and blank input displayed a warning. These are smoke checks, not a formal evaluation or accuracy estimate. No held-out test set or model-quality metrics are available.
