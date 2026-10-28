@@ -34,6 +34,7 @@ model.fit(messages, labels)
 
 st.title("🛡️ Spam Message Detector")
 st.caption("A beginner machine-learning project using TF-IDF and Naive Bayes")
+st.caption("Created by Shaligram Pathak | Chandigarh University")
 st.write("Enter a message to see how a text-classification model labels it. This is an educational demonstration, not a security or filtering service.")
 
 with st.form("message_form"):
@@ -63,3 +64,11 @@ st.write("The model trains when this app starts on 16 hand-written teaching exam
 st.info("Do not use this demo to make security decisions or paste private messages. A next improvement would be training and evaluating on a properly sourced public SMS dataset.")
 st.divider()
 st.caption("Student demonstration project • Python · scikit-learn · Streamlit")
+with st.expander("Research and acknowledgement"):
+    st.markdown("""
+    This educational project uses a small teaching dataset written for demonstration. It does not use the UCI SMS Spam Collection.
+
+    Background and technical references: [UCI SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection), [scikit-learn Naive Bayes guide](https://scikit-learn.org/stable/modules/naive_bayes.html), and [TF-IDF vectorizer documentation](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html).
+
+    AI assistance was used while drafting and explaining parts of the code. The student should review and understand the implementation and follow course academic-integrity rules.
+    """)
