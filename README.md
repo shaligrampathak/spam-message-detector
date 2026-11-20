@@ -2,6 +2,8 @@
 
 A simple machine learning web app that labels a message as **likely spam** or **likely not spam**.
 
+Created by Shaligram Pathak | Chandigarh University
+
 ## Live App
 
 [Open the live Streamlit app](https://spam-message-detector-h8ih6njyklhqezjpdac6zj.streamlit.app/)
@@ -10,10 +12,12 @@ A simple machine learning web app that labels a message as **likely spam** or **
 
 The app uses a scikit-learn Pipeline with two steps:
 
-1. **TfidfVectorizer** converts the words of a message into weighted numbers.
-2. **MultinomialNB** (Multinomial Naive Bayes) uses those numbers to predict the label.
+1. **TfidfVectorizer** converts the words of a message into weighted numerical features.
+2. **MultinomialNB** (Multinomial Naive Bayes) uses those features to predict the label.
 
-The model is fitted once when the app starts. It does not learn from visitor messages. If the input is empty, the app shows a warning instead of a prediction.
+The model is fitted once when the app starts. It does not learn from visitor messages. The input is limited to 2,000 characters. If the input is empty, the app shows a warning instead of a prediction.
+
+The app returns either **spam** or **not spam**, displayed as “Likely spam” or “Likely not spam.” The prediction can be wrong because the model does not understand intent like a person and cannot verify whether a link is dangerous.
 
 ## Tech Stack
 
@@ -34,6 +38,7 @@ The model uses 16 hand-written teaching examples: 8 spam and 8 not spam. No publ
 - No separate test set, so accuracy, precision, recall, and F1 score have not been calculated
 - It only looks at words and cannot verify whether a link is actually dangerous
 - Predictions can be wrong, so this is a learning prototype and not a real spam filter
+- Do not use this demo to make security decisions or paste private messages into it
 
 ## Future Work
 
@@ -52,7 +57,11 @@ Train on a public SMS dataset such as the [UCI SMS Spam Collection](https://arch
 - [Live app](https://spam-message-detector-h8ih6njyklhqezjpdac6zj.streamlit.app/)
 - [Source code](https://github.com/shaligrampathak/spam-message-detector)
 
-## Acknowledgements
+## References and Acknowledgement
 
-- [scikit-learn documentation](https://scikit-learn.org/stable/)
+- [UCI SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection) — a possible dataset for future work; it is not used by this current app
+- [scikit-learn Naive Bayes guide](https://scikit-learn.org/stable/modules/naive_bayes.html)
+- [TfidfVectorizer documentation](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html)
 - [Streamlit documentation](https://docs.streamlit.io/)
+
+AI assistance was used while drafting and explaining parts of the code. The student should review and understand the implementation and follow course academic-integrity rules.
