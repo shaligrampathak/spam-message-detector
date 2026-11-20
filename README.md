@@ -1,62 +1,58 @@
 # Spam Message Detector
 
-A beginner machine-learning demonstration that predicts whether entered text resembles spam or not spam.
+A simple machine learning web app that labels a message as **likely spam** or **likely not spam**.
 
-## Problem statement
+## Live App
 
-Unwanted messages can contain misleading offers or requests. This project demonstrates how a text-classification model can learn from labelled messages and produce a prediction for new text.
+[Open the live Streamlit app](https://spam-message-detector-h8ih6njyklhqezjpdac6zj.streamlit.app/)
 
-## Objectives
+## How It Works
 
-- Build a genuine text classifier using scikit-learn.
-- Convert text to numeric TF-IDF features.
-- Train a Multinomial Naive Bayes classifier.
-- Provide a simple Streamlit interface and explain its limitations.
+The app uses a scikit-learn Pipeline with two steps:
 
-## Technologies
+1. **TfidfVectorizer** converts the words of a message into weighted numbers.
+2. **MultinomialNB** (Multinomial Naive Bayes) uses those numbers to predict the label.
+
+The model is fitted once when the app starts. It does not learn from visitor messages. If the input is empty, the app shows a warning instead of a prediction.
+
+## Tech Stack
 
 - Python
+- scikit-learn
 - Streamlit
-- scikit-learn (`TfidfVectorizer`, `MultinomialNB`, `Pipeline`)
+- Google Colab for development
+- GitHub for hosting the code
+- Streamlit Community Cloud for deployment
 
-## Dataset and limitations
+## Training Data
 
-The current app uses 16 hand-written teaching examples (8 spam and 8 not spam). They are included in `app.py` and are for demonstration only. They are not a sourced public dataset, are too small and narrow to represent real messages, and have not been evaluated on a separate test set. No accuracy, precision, recall, or F1 score is claimed.
+The model uses 16 hand-written teaching examples: 8 spam and 8 not spam. No public dataset is used.
 
-## Methodology
+## Limitations
 
-`TfidfVectorizer` converts message text into word-weight numbers. `MultinomialNB` learns patterns associated with labels. A scikit-learn `Pipeline` keeps vectorization and classification together so new text receives the same transformation before prediction.
+- Very small and narrow training data, English only
+- No separate test set, so accuracy, precision, recall, and F1 score have not been calculated
+- It only looks at words and cannot verify whether a link is actually dangerous
+- Predictions can be wrong, so this is a learning prototype and not a real spam filter
 
-## Run locally
+## Future Work
 
-1. Install Python 3 from the official Python website if it is not installed.
-2. Open Command Prompt in this folder.
-3. Run `py -m pip install -r requirements.txt`.
-4. Run `py -m streamlit run app.py`.
-5. Open the local address Streamlit prints (usually `http://localhost:8501`).
+Train on a public SMS dataset such as the [UCI SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection), split the data into training and test sets before fitting, evaluate on unseen messages, and inspect errors.
 
-## Test
+## Run Locally
 
-Try one spam-like message such as `Congratulations, claim your free prize today` and one ordinary message such as `Are we still meeting at the library?`. Record the actual output. Try blank input too; the app should ask for a message. These are demonstrations, not an evaluation set.
+1. Install Python 3.
+2. Clone this repository and open a terminal in the project folder.
+3. Install the dependencies with: `py -m pip install -r requirements.txt`.
+4. Start the app with: `py -m streamlit run app.py`.
+5. Open the local address shown by Streamlit, usually `http://localhost:8501`.
 
-## Results
+## Project Links
 
-No formal test-set results are included. The hand-picked examples are not a basis for reporting model quality.
+- [Live app](https://spam-message-detector-h8ih6njyklhqezjpdac6zj.streamlit.app/)
+- [Source code](https://github.com/shaligrampathak/spam-message-detector)
 
-## Limitations and future work
+## Acknowledgements
 
-The dataset is tiny, manually written, English-only, and unlike a representative collection of real SMS messages. Naive Bayes can misclassify unfamiliar wording, context, sarcasm, and mixed-language text. Future work: use a properly cited public SMS dataset, split into training and test sets before fitting TF-IDF, report accuracy/precision/recall/F1 and a confusion matrix, and compare a second model.
-
-## References and acknowledgement
-
-- scikit-learn documentation: https://scikit-learn.org/stable/
-- Streamlit documentation: https://docs.streamlit.io/
-- AI assistance was used to help draft and explain parts of the code. The student should review, run, modify, and explain all submitted work, and follow university academic-integrity rules.
-
-## Deployed website
-
-Live app: https://spam-message-detector-h8ih6njyklhqezjpdac6zj.streamlit.app/
-
-## Observed demonstration checks
-
-The live app was checked with hand-picked examples: `Congratulations, claim your free prize today` returned “Likely spam”; `Are we still meeting at the library?` returned “Likely not spam”; and blank input displayed a warning. These are smoke checks, not a formal evaluation or accuracy estimate. No held-out test set or model-quality metrics are available.
+- [scikit-learn documentation](https://scikit-learn.org/stable/)
+- [Streamlit documentation](https://docs.streamlit.io/)
